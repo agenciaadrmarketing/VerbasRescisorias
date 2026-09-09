@@ -64,13 +64,25 @@
   function initLoader() {
     var loader = document.getElementById("loader");
     if (!loader) return;
-    document.documentElement.style.overflow = "hidden";
-    setTimeout(function () {
+    // Sem framework para "esconder", o loader não precisa mais de um atraso fixo
+    // (isso só inflava o Speed Index): esconde assim que a página termina de
+    // carregar, com um teto de segurança curto.
+    var done = false;
+    function esconder() {
+      if (done) return;
+      done = true;
       document.documentElement.style.overflow = "";
       loader.style.opacity = "0";
       loader.style.pointerEvents = "none";
-      setTimeout(function () { loader.hidden = true; }, 520);
-    }, 900);
+      setTimeout(function () { loader.hidden = true; }, 200);
+    }
+    document.documentElement.style.overflow = "hidden";
+    if (document.readyState === "complete") {
+      esconder();
+    } else {
+      window.addEventListener("load", esconder);
+      setTimeout(esconder, 800);
+    }
   }
 
   // ---------- Popup WhatsApp (lead form) ----------
@@ -162,22 +174,29 @@
     var visivel = [7000, 9000, 6500, 8000];
     var oculto = [5000, 11000, 7000, 14000];
     var i = 0, encerrado = false;
+    // visibility (não display/hidden) mantém o espaço reservado no flex column,
+    // então o ciclo automático não empurra o botão de WhatsApp — evita CLS.
+    function mostrarBalao(v) {
+      balao.style.visibility = v ? "visible" : "hidden";
+      balao.style.opacity = v ? "1" : "0";
+      balao.style.pointerEvents = v ? "auto" : "none";
+    }
     fecharBtn.addEventListener("click", function (e) {
       e.preventDefault(); e.stopPropagation();
       encerrado = true;
-      balao.hidden = true;
+      mostrarBalao(false);
     });
     function ciclo() {
       if (encerrado) return;
       setTimeout(function () {
         if (encerrado) return;
-        balao.hidden = true;
+        mostrarBalao(false);
         setTimeout(function () {
           if (encerrado) return;
           i = (i + 1) % frases.length;
           balaoTitulo.textContent = frases[i].t;
           balaoSub.textContent = frases[i].s;
-          balao.hidden = false;
+          mostrarBalao(true);
           ciclo();
         }, oculto[i % oculto.length]);
       }, visivel[i % visivel.length]);
@@ -253,8 +272,9 @@
       itemEl.textContent = "Item " + c.numero + " de 04";
       barraEl.style.height = ((index + 1) / cards.length) * 100 + "%";
       Array.prototype.forEach.call(dotsWrap.children, function (dot, idx) {
-        dot.style.width = idx === index ? "26px" : "6px";
-        dot.style.background = idx === index ? "#1EA94F" : "rgba(255,255,255,0.25)";
+        var pill = dot.firstElementChild;
+        pill.style.width = idx === index ? "26px" : "6px";
+        pill.style.background = idx === index ? "#1EA94F" : "rgba(255,255,255,0.25)";
       });
     }
     function ir(i) {
@@ -278,7 +298,11 @@
       var dot = document.createElement("button");
       dot.type = "button";
       dot.setAttribute("aria-label", "Ir para item " + c.numero);
-      dot.style.cssText = "height:6px;border-radius:999px;border:none;padding:0;cursor:pointer;transition:width .3s ease,background .3s ease;";
+      // Área de toque ampliada (min. 24x24) mantendo a pílula visual pequena por dentro.
+      dot.style.cssText = "width:24px;height:24px;padding:0;border:none;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;";
+      var pill = document.createElement("span");
+      pill.style.cssText = "display:block;height:6px;border-radius:999px;transition:width .3s ease,background .3s ease;";
+      dot.appendChild(pill);
       dot.addEventListener("click", function () { ir(idx); });
       dotsWrap.appendChild(dot);
     });
@@ -331,6 +355,24 @@
     }, podeRolar ? 3000 : 80);
   }
 
+  // Botão flutuante só aparece depois que o visitante rola até a 2ª seção da LP.
+  function initFlutuante() {
+    var flutuante = document.getElementById("flutuante");
+    var gatilho = document.getElementById("servicos");
+    if (!flutuante || !gatilho) return;
+    function revelar() {
+      flutuante.hidden = false;
+      requestAnimationFrame(function () { flutuante.style.opacity = "1"; });
+    }
+    if (!("IntersectionObserver" in window)) { revelar(); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { revelar(); io.disconnect(); }
+      });
+    }, { rootMargin: "0px 0px -60% 0px", threshold: 0 });
+    io.observe(gatilho);
+  }
+
   function boot() {
     popup = document.getElementById("popup");
     popupTitulo = document.getElementById("popup-titulo");
@@ -353,6 +395,7 @@
     wireWhatsapp();
     wireExitIntent();
     capturarUtm();
+    initFlutuante();
     initBalao();
     initLightbox();
     initVale();

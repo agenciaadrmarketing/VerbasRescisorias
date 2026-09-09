@@ -65,7 +65,7 @@
   @keyframes faqTick { 0%,30% { transform: translateX(-6px); opacity: 0.4; } 50% { transform: translateX(2px); opacity: 1; } 100% { transform: translateX(20px); opacity: 0; } }
   .faq-meter { animation: faqMeter 5.8s ease-in-out infinite; }
   .faq-tick { animation: faqTick 3.2s ease-in-out infinite; }
-  @keyframes heroIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  @keyframes heroIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes heroZoom { from { transform: scale(1.12); } to { transform: scale(1); } }
   .hero-in > * { animation: heroIn .85s cubic-bezier(.22,.7,.2,1) both; }
   .hero-in > *:nth-child(1) { animation-delay: .05s; }
@@ -208,7 +208,7 @@
 
   /* [hidden] tem baixa especificidade; aplicar display:flex só quando NÃO hidden evita que o
      inline style vença a regra padrão do navegador e o overlay fique clicável mesmo "escondido". */
-  #loader:not([hidden]), #popup:not([hidden]), #lightbox:not([hidden]) { display: flex; }
+  #loader:not([hidden]), #popup:not([hidden]), #lightbox:not([hidden]), #flutuante:not([hidden]) { display: flex; }
 
   /* ---- Utilitários que substituem style-hover/style-before/style-after do template original ---- */
   .cta-shine {
@@ -268,8 +268,6 @@
   .close-x:hover { color: #0B0B0B; }
   .close-x--dark { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.05); color: #FFFFFF; font-size: 17px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
   .close-x--dark:hover { background: rgba(255,255,255,0.12); }
-
-  .vale-dot { height: 6px; border-radius: 999px; border: none; padding: 0; cursor: pointer; transition: width .3s ease, background .3s ease; }
 </style>
 <script src="./mapa-brasil.js" defer></script>
 </head>
@@ -296,6 +294,7 @@
     </div>
   </header>
 
+  <main>
   <section class="sec hero-sec" style="position: relative; padding: 108px 24px 124px; background: #0B0B0B; overflow: hidden;">
     <img src="uploads/opt/hero-1600.webp" srcset="uploads/opt/hero-640.webp 640w, uploads/opt/hero-960.webp 960w, uploads/opt/hero-1280.webp 1280w, uploads/opt/hero-1600.webp 1600w" sizes="100vw" fetchpriority="high" decoding="async" alt="Carteira de trabalho, martelo e livros de Direito do Trabalho sobre a mesa" width="1600" height="898" class="hero-bg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; filter: grayscale(0.4) contrast(1.05) brightness(0.9); display: block;">
     <div class="hero-overlay" style="position: absolute; inset: 0; background: linear-gradient(100deg, #0B0B0B 0%, #0B0B0B 22%, rgba(11,11,11,0.88) 42%, rgba(11,11,11,0.6) 68%, rgba(11,11,11,0.32) 100%); pointer-events: none;"></div>
@@ -318,7 +317,7 @@
   </section>
 
   <section id="servicos" class="sec" style="position: relative; background: #F4F4F4; color: #0B0B0B; padding: 84px 24px; overflow: hidden;">
-    <img src="uploads/opt/servicos-bg.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(1) contrast(1.1); opacity: 0.07; z-index: 0; pointer-events: none;">
+    <img src="uploads/opt/servicos-bg-960.webp" srcset="uploads/opt/servicos-bg-500.webp 500w, uploads/opt/servicos-bg-960.webp 960w" sizes="100vw" alt="" aria-hidden="true" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(1) contrast(1.1); opacity: 0.07; z-index: 0; pointer-events: none;">
     <div style="max-width: 1180px; margin: 0 auto; position: relative; z-index: 1;">
       <div style="max-width: 760px; margin: 0 auto; text-align: center;">
         <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #6E6E6E;">Nossos serviços</div>
@@ -385,7 +384,7 @@
   </section>
 
   <section class="sec" style="position: relative; padding: 88px 24px; background: #0B0B0B; overflow: hidden;">
-    <img src="uploads/opt/carteira.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(1) contrast(1.1); opacity: 0.07; z-index: 0; pointer-events: none;">
+    <img src="uploads/opt/carteira-900.webp" srcset="uploads/opt/carteira-420.webp 420w, uploads/opt/carteira-900.webp 900w" sizes="100vw" alt="" aria-hidden="true" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(1) contrast(1.1); opacity: 0.07; z-index: 0; pointer-events: none;">
     <div class="split" style="position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 54px; align-items: center;">
       <div>
         <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #8A8A8A;">Sua principal prova</div>
@@ -411,7 +410,7 @@
         <div style="perspective: 1200px; width: min(300px, 80vw);">
           <div style="position: relative; width: 100%; aspect-ratio: 744 / 1080; transform-style: preserve-3d;">
             <div style="position: absolute; inset: 0; border-radius: 8px 5px 5px 8px; overflow: hidden; box-shadow: 0 30px 70px -24px rgba(0,0,0,0.6), inset 0 -1px rgba(0,0,0,0.2), inset 0 2px rgba(255,255,255,0.12);">
-              <img src="uploads/opt/carteira.webp" alt="Carteira de Trabalho brasileira" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
+              <img src="uploads/opt/carteira-900.webp" srcset="uploads/opt/carteira-420.webp 420w, uploads/opt/carteira-900.webp 900w" sizes="(max-width: 600px) 80vw, 300px" alt="Carteira de Trabalho brasileira" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
               <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,11,11,0.05), rgba(11,11,11,0.28));"></div>
               <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 9%; background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 55%, rgba(0,0,0,0.28) 90%, rgba(0,0,0,0.42));"></div>
             </div>
@@ -423,7 +422,7 @@
   </section>
 
   <section class="sec" style="position: relative; background: #F4F4F4; color: #0B0B0B; padding: 84px 24px; overflow: hidden;">
-    <img src="uploads/opt/passos-bg.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(1) contrast(1.1); opacity: 0.07; z-index: 0; pointer-events: none;">
+    <img src="uploads/opt/passos-bg-960.webp" srcset="uploads/opt/passos-bg-500.webp 500w, uploads/opt/passos-bg-960.webp 960w" sizes="100vw" alt="" aria-hidden="true" loading="lazy" decoding="async" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(1) contrast(1.1); opacity: 0.07; z-index: 0; pointer-events: none;">
     <div style="max-width: 1180px; margin: 0 auto; position: relative; z-index: 1;">
       <div style="max-width: 700px; margin: 0 auto; text-align: center;">
         <div style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #6E6E6E;">Como funciona</div>
@@ -584,7 +583,7 @@
               <img src="uploads/opt/avatar-1.webp" width="44" height="44" loading="lazy" decoding="async" alt="Ana Paula Ribeiro" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Ana Paula Ribeiro</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">FGTS não pago · Boituva/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">FGTS não pago · Boituva/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -594,7 +593,7 @@
               <img src="uploads/opt/avatar-2.webp" width="44" height="44" loading="lazy" decoding="async" alt="Simone Barros" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Simone Barros</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">Horas extras · Sorocaba/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">Horas extras · Sorocaba/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -604,7 +603,7 @@
               <img src="uploads/opt/avatar-3.webp" width="44" height="44" loading="lazy" decoding="async" alt="Juliana Salvador" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Juliana Salvador</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">Verbas rescisórias · Tatuí/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">Verbas rescisórias · Tatuí/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -614,7 +613,7 @@
               <img src="uploads/opt/avatar-1.webp" width="44" height="44" loading="lazy" decoding="async" alt="Ana Paula Ribeiro" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Ana Paula Ribeiro</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">FGTS não pago · Boituva/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">FGTS não pago · Boituva/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -624,7 +623,7 @@
               <img src="uploads/opt/avatar-2.webp" width="44" height="44" loading="lazy" decoding="async" alt="Simone Barros" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Simone Barros</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">Horas extras · Sorocaba/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">Horas extras · Sorocaba/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -634,7 +633,7 @@
               <img src="uploads/opt/avatar-3.webp" width="44" height="44" loading="lazy" decoding="async" alt="Juliana Salvador" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Juliana Salvador</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">Verbas rescisórias · Tatuí/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">Verbas rescisórias · Tatuí/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -646,7 +645,7 @@
               <img src="uploads/opt/avatar-4.webp" width="44" height="44" loading="lazy" decoding="async" alt="Larissa Moraes" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Larissa Moraes</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">Reversão de justa causa · Itu/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">Reversão de justa causa · Itu/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -656,7 +655,7 @@
               <img src="uploads/opt/avatar-5.webp" width="44" height="44" loading="lazy" decoding="async" alt="Camila Ferraz" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Camila Ferraz</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">Atendimento online · Campinas/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">Atendimento online · Campinas/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -666,7 +665,7 @@
               <img src="uploads/opt/avatar-6.webp" width="44" height="44" loading="lazy" decoding="async" alt="Eduardo Lemes" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Eduardo Lemes</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">Rescisão indireta · São Paulo/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">Rescisão indireta · São Paulo/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -676,7 +675,7 @@
               <img src="uploads/opt/avatar-4.webp" width="44" height="44" loading="lazy" decoding="async" alt="Larissa Moraes" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Larissa Moraes</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">Reversão de justa causa · Itu/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">Reversão de justa causa · Itu/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -686,7 +685,7 @@
               <img src="uploads/opt/avatar-5.webp" width="44" height="44" loading="lazy" decoding="async" alt="Camila Ferraz" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Camila Ferraz</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">Atendimento online · Campinas/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">Atendimento online · Campinas/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -696,7 +695,7 @@
               <img src="uploads/opt/avatar-6.webp" width="44" height="44" loading="lazy" decoding="async" alt="Eduardo Lemes" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Eduardo Lemes</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">Rescisão indireta · São Paulo/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">Rescisão indireta · São Paulo/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -708,7 +707,7 @@
               <img src="uploads/opt/avatar-7.webp" width="44" height="44" loading="lazy" decoding="async" alt="Paulo Nogueira" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Paulo Nogueira</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">13º e férias · Cerquilho/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">13º e férias · Cerquilho/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -718,7 +717,7 @@
               <img src="uploads/opt/avatar-8.webp" width="44" height="44" loading="lazy" decoding="async" alt="Fernando Alcântara" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Fernando Alcântara</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">Aviso prévio · Boituva/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">Aviso prévio · Boituva/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -728,7 +727,7 @@
               <img src="uploads/opt/avatar-9.webp" width="44" height="44" loading="lazy" decoding="async" alt="Bruno Cardoso" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Bruno Cardoso</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">Verbas rescisórias · Porto Feliz/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">Verbas rescisórias · Porto Feliz/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -738,7 +737,7 @@
               <img src="uploads/opt/avatar-7.webp" width="44" height="44" loading="lazy" decoding="async" alt="Paulo Nogueira" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Paulo Nogueira</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">13º e férias · Cerquilho/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">13º e férias · Cerquilho/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -748,7 +747,7 @@
               <img src="uploads/opt/avatar-8.webp" width="44" height="44" loading="lazy" decoding="async" alt="Fernando Alcântara" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Fernando Alcântara</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">Aviso prévio · Boituva/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">Aviso prévio · Boituva/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -758,7 +757,7 @@
               <img src="uploads/opt/avatar-9.webp" width="44" height="44" loading="lazy" decoding="async" alt="Bruno Cardoso" style="width: 44px; height: 44px; flex: none; border-radius: 999px; object-fit: cover; display: block;">
               <span style="display: flex; flex-direction: column;">
                 <span style="font-size: 14.5px; font-weight: 600; color: #0B0B0B;">Bruno Cardoso</span>
-                <span style="font-size: 13px; font-weight: 300; color: #8A8A8A;">Verbas rescisórias · Porto Feliz/SP</span>
+                <span style="font-size: 13px; font-weight: 300; color: #707070;">Verbas rescisórias · Porto Feliz/SP</span>
               </span>
             </figcaption>
           </figure>
@@ -778,7 +777,7 @@
 
   <section class="stack-sec" style="position: relative; background: #FFFFFF; padding: 84px 24px;">
     <div style="max-width: 700px; margin: 0 auto; padding: 0 24px 56px; text-align: center;">
-      <div class="reveal" style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #8A8A8A;">Vale a pena saber</div>
+      <div class="reveal" style="font-size: 11.5px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: #707070;">Vale a pena saber</div>
       <h2 class="h2 reveal" style="font-weight: 600; font-size: 40px; line-height: 1.15; letter-spacing: -0.02em; margin: 14px 0 0; color: #0B0B0B;">O que <span class="grad-light">toda rescisão incompleta</span> tem em comum</h2>
     </div>
     <div class="vale-panel reveal" style="max-width: 960px; margin: 0 auto; position: relative; background: #0B0B0B; border-radius: 28px; padding: 64px 60px; overflow: hidden; box-shadow: 0 50px 100px -50px rgba(11,11,11,0.4);">
@@ -877,11 +876,12 @@
       </div>
     </div>
   </section>
+  </main>
 
   <footer style="background: #050505; border-top: 1px solid rgba(255,255,255,0.1);">
     <div class="foot-grid" style="max-width: 1180px; margin: 0 auto; padding: 64px 24px 56px; display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 48px;">
       <div style="display: grid; gap: 26px; align-content: start;">
-        <img src="uploads/opt/logo-vm.webp" fetchpriority="low" decoding="async" alt="Vieira &amp; Marques Sociedade de Advogados" loading="lazy" style="width: 100%; max-width: 380px; height: auto; display: block; filter: invert(1);">
+        <img src="uploads/opt/logo-vm.webp" fetchpriority="low" decoding="async" alt="Vieira &amp; Marques Sociedade de Advogados" loading="lazy" width="380" height="85" style="width: 100%; max-width: 380px; height: auto; display: block; filter: invert(1);">
         <div style="display: flex; gap: 12px;">
           <a href="https://www.facebook.com/vieiraemarques.advogados" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
             <svg viewBox="0 0 24 24" width="17" height="17" fill="#EDEDED" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.2c0-.9.3-1.5 1.5-1.5h1.7V4c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2V10H7.5v3h2.7v8h3.3z"></path></svg>
@@ -914,14 +914,14 @@
     </div>
     <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 26px 24px 30px;">
       <div style="max-width: 1180px; margin: 0 auto; display: grid; gap: 14px; text-align: center;">
-        <p style="font-size: 13.5px; font-weight: 300; color: #B4B4B4; margin: 0;">Copyright © 2026 Vieira &amp; Marques Sociedade de Advogados | Site desenvolvido por <a href="https://agenciaadrmarketing.com/" target="_blank" rel="noopener" style="color: #EDEDED;">agenciaadrmarketing.com</a></p>
+        <p style="font-size: 13.5px; font-weight: 300; color: #B4B4B4; margin: 0;">Copyright © 2026 Vieira &amp; Marques Sociedade de Advogados | Site desenvolvido por <a href="https://agenciaadrmarketing.com/" target="_blank" rel="noopener" style="color: #EDEDED; text-decoration: underline;">agenciaadrmarketing.com</a></p>
         <p style="font-size: 12.5px; font-weight: 300; line-height: 1.65; color: #8A8A8A; margin: 0;">Esta página tem caráter meramente informativo, em conformidade com o Código de Ética e Disciplina da OAB e o Provimento nº 205/2021. Não há oferta de serviços, captação de clientela, promessa de resultado ou garantia de devolução de valores. Cada caso é analisado individualmente.</p>
       </div>
     </div>
   </footer>
 
-  <div class="flutuante" style="position: fixed; bottom: 22px; right: 22px; z-index: 80; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; max-width: calc(100vw - 44px);">
-    <div id="balao" class="balao" style="position: relative; background: #FFFFFF; color: #0B0B0B; border-radius: 14px; padding: 16px 40px 16px 18px; width: 290px; box-shadow: 0 4px 14px rgba(0,0,0,0.22);">
+  <div id="flutuante" class="flutuante" hidden style="position: fixed; bottom: 22px; right: 22px; z-index: 80; flex-direction: column; align-items: flex-end; gap: 12px; max-width: calc(100vw - 44px); opacity: 0; transition: opacity .4s ease;">
+    <div id="balao" class="balao" style="position: relative; background: #FFFFFF; color: #0B0B0B; border-radius: 14px; padding: 16px 40px 16px 18px; width: 290px; box-shadow: 0 4px 14px rgba(0,0,0,0.22); transition: opacity .3s ease;">
       <button type="button" id="balao-fechar" aria-label="Fechar" class="close-x" style="position: absolute; top: 8px; right: 10px;">×</button>
       <p id="balao-titulo" style="font-size: 15px; font-weight: 600; line-height: 1.35; margin: 0;">Foi demitido recentemente?</p>
       <p id="balao-sub" style="font-size: 13.5px; font-weight: 300; line-height: 1.5; color: #4A4A4A; margin: 6px 0 0;">Fale com um advogado e descubra se recebeu todas as verbas da rescisão.</p>
@@ -935,7 +935,7 @@
     <div class="tp-pop" style="position: relative; width: 100%; max-width: 440px; max-height: 92vh; overflow: auto; background: #141414; border: 1px solid rgba(255,255,255,0.14); border-radius: 20px; padding: 34px 32px; box-shadow: 0 60px 100px -30px rgba(0,0,0,0.7);">
       <button type="button" id="popup-fechar1" aria-label="Fechar formulário" class="close-x--dark" style="position: absolute; top: 16px; right: 16px;">×</button>
       <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 22px;">
-        <img src="uploads/opt/logo-vm.webp" alt="Vieira &amp; Marques Sociedade de Advogados" style="height: 34px; width: auto; display: block; filter: invert(1); margin-bottom: 10px;">
+        <img src="uploads/opt/logo-vm.webp" alt="Vieira &amp; Marques Sociedade de Advogados" width="153" height="34" style="height: 34px; width: auto; display: block; filter: invert(1); margin-bottom: 10px;">
       </div>
       <h2 id="popup-titulo" style="margin: 0 0 8px; text-align: center; font-size: 22px; font-weight: 600; line-height: 1.3; color: #FFFFFF;">Vamos conversar?</h2>
       <p id="popup-sub" style="margin: 0 0 24px; text-align: center; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.62);">Deixe seu nome e WhatsApp — a mensagem já vai pronta.</p>
