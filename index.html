@@ -177,8 +177,8 @@
     .vale-grid > div:first-child { display: none !important; }
     .vale-grid h3 { font-size: 25px !important; }
   }
-  @keyframes vmCardPulse { 0%, 100% { transform: scale(1); box-shadow: 0 14px 30px -6px rgba(0,0,0,0.55), 0 0 0 0 rgba(30,169,79,0); } 50% { transform: scale(1.08); box-shadow: 0 22px 44px -8px rgba(0,0,0,0.6), 0 0 0 14px rgba(30,169,79,0.14); } }
-  @keyframes vmGlow { 0%, 100% { filter: invert(1) drop-shadow(0 0 0 rgba(30,169,79,0)); } 50% { filter: invert(1) drop-shadow(0 0 16px rgba(30,169,79,0.85)); } }
+  @keyframes vmCardPulse { 0%, 100% { transform: scale(1); box-shadow: 0 14px 30px -6px rgba(0,0,0,0.55), 0 0 0 0 rgba(255,255,255,0); } 50% { transform: scale(1.08); box-shadow: 0 22px 44px -8px rgba(0,0,0,0.6), 0 0 0 14px rgba(255,255,255,0.12); } }
+  @keyframes vmGlow { 0%, 100% { filter: drop-shadow(0 0 0 rgba(255,255,255,0)); } 50% { filter: drop-shadow(0 0 16px rgba(255,255,255,0.75)); } }
   @media (prefers-reduced-motion: reduce) { .vm-loader-card, .vm-loader-mark { animation: none !important; } }
   @media (max-width: 720px) {
     #servicos, #servicos .grid3 > div { text-align: center; }
@@ -276,7 +276,7 @@
 
   <div id="loader" role="status" aria-live="polite" aria-label="Carregando" style="position: fixed; inset: 0; z-index: 9999; background: #0B0B0B; align-items: center; justify-content: center; transition: opacity .5s ease;">
     <div class="vm-loader-card" style="width: 112px; height: 112px; border-radius: 22px; background: #141414; border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; animation: vmCardPulse 1.7s ease-in-out infinite;">
-      <img src="uploads/opt/logo-loader.webp" alt="Vieira &amp; Marques" width="120" height="50" class="vm-loader-mark" style="width: 46px; height: auto; display: block; filter: invert(1); animation: vmGlow 1.7s ease-in-out infinite;">
+      <img src="uploads/opt/logo-loader-vm.webp" alt="Vieira &amp; Marques" width="180" height="180" class="vm-loader-mark" style="width: 66px; height: auto; display: block; border-radius: 10px; animation: vmGlow 1.7s ease-in-out infinite;">
     </div>
   </div>
 
