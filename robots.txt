@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://verbas-rescisorias.vieiraemarquesadvogados.com/sitemap.xml
+Sitemap: https://verbasrescisorias.vieiraemarquesadvogados.com/sitemap.xml
